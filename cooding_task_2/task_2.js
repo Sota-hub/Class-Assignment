@@ -18,6 +18,8 @@
 
 // SOLUTION:
 (function () {
+  // (4_Global Variable)
+  let grade = "";
   // 1
   const students = [
     {
@@ -44,22 +46,40 @@
   // 2
   const passingLimits = [91, 81, 71, 61, 51];
   const degree = ["A", "B", "C", "D", "E"];
+  // (4_function)
+  const decideLimit = (score) => {
+    grade = "";
+    passingLimits.forEach((limit, index) => {
+      if (grade) return;
+      if (score >= limit) grade = degree[index];
+    });
+  };
   // 3
   const totalScore = students.map((student) => student.score1 + student.score2);
   // 4
-  const examPassed = () => {
-    for (let i = 0; i < students.length; i++) {
-      let grade = false;
-      for (let j = 0; j < passingLimits.length; j++) {
-        if (totalScore[i] >= passingLimits[j]) grade = degree[j];
-        if (grade) break;
-        else grade = "";
-      }
+  const examGrade = () => {
+    totalScore.forEach((score, index) => {
+      decideLimit(score);
       console.log(
-        `${students[i].name} got ${totalScore[i]} points : GRADE ${grade}`
+        `${students[index].name} got ${score} points : GRADE ${grade}`
       );
-    }
+    });
   };
   // 5
-  examPassed();
+  examGrade();
 })();
+
+// 4
+// const examGrade = () => {
+// for (let i = 0; i < students.length; i++) {
+//   let grade = false;
+//   for (let j = 0; j < passingLimits.length; j++) {
+//     if (totalScore[i] >= passingLimits[j]) grade = degree[j];
+//     if (grade) break;
+//     else grade = "";
+//   }
+//   console.log(
+//     `${students[i].name} got ${totalScore[i]} points : GRADE ${grade}`
+//   );
+// }
+// };
