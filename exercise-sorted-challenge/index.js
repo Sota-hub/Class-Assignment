@@ -2,29 +2,22 @@
 
 const isSorted = (arr) => {
   let ArrangementOrder;
-  let answer;
+  let answer = true;
 
   if (arr.length === 0 || arr.length === 1) {
-    console.log(true);
+    console.log(answer);
     return;
   }
 
-  if (arr[0] < arr[1]) {
-    ArrangementOrder = "ascending";
-  } else {
-    ArrangementOrder = "descending";
-  }
+  if (arr[0] < arr[1]) ArrangementOrder = "ascending";
+  if (arr[0] > arr[1]) ArrangementOrder = "descending";
 
   for (let i = 0; i < arr.length - 1; i++) {
-    const a = arr[i];
-    const b = arr[i + 1];
-
-    if (ArrangementOrder === "ascending" && a < b) {
-      answer = true;
-    } else if (ArrangementOrder === "descending" && a > b) {
-      answer = true;
-    } else {
+    if (ArrangementOrder === "ascending" && arr[i] < arr[i + 1]) "";
+    else if (ArrangementOrder === "descending" && arr[i] > arr[i + 1]) "";
+    else {
       answer = false;
+      break;
     }
   }
 
