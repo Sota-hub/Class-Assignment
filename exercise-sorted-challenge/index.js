@@ -2,6 +2,7 @@
 
 const isSorted = (arr) => {
   let ArrangementOrder;
+  let answer;
 
   if (arr.length === 0 || arr.length === 1) {
     console.log(true);
@@ -14,8 +15,7 @@ const isSorted = (arr) => {
     ArrangementOrder = "descending";
   }
 
-  let answer;
-  for (let i = 0; i < arr.length; i++) {
+  for (let i = 0; i < arr.length - 1; i++) {
     const a = arr[i];
     const b = arr[i + 1];
 
@@ -26,8 +26,6 @@ const isSorted = (arr) => {
     } else {
       answer = false;
     }
-
-    if (b === arr[arr.length - 1]) break;
   }
 
   console.log(answer);
